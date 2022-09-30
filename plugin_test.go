@@ -9,8 +9,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/pseudomuto/protokit"
-	"github.com/pseudomuto/protokit/utils"
+	"github.com/ruanspies/protokit"
+	"github.com/ruanspies/protokit/utils"
 )
 
 type PluginTest struct {
