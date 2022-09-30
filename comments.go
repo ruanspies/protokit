@@ -33,12 +33,12 @@ func (c *Comment) String() string {
 func newComment(loc *descriptor.SourceCodeInfo_Location) *Comment {
 	detached := make([]string, len(loc.GetLeadingDetachedComments()))
 	for i, c := range loc.GetLeadingDetachedComments() {
-		detached[i] = scrub(c)
+		detached[i] = c
 	}
 
 	return &Comment{
-		Leading:  scrub(loc.GetLeadingComments()),
-		Trailing: scrub(loc.GetTrailingComments()),
+		Leading:  loc.GetLeadingComments(),
+		Trailing: loc.GetTrailingComments(),
 		Detached: detached,
 	}
 }
@@ -86,8 +86,4 @@ func (c Comments) Get(path string) *Comment {
 
 	// return an empty comment
 	return &Comment{Detached: make([]string, 0)}
-}
-
-func scrub(str string) string {
-	return strings.TrimSpace(strings.Replace(str, "\n ", "\n", -1))
 }
